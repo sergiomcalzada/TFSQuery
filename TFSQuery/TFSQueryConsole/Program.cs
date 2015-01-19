@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace TFSQueryConsole
     {
         static void Main(string[] args)
         {
-            var uri = new Uri("http://it-pc4:8080/tfs/neoSON_Collection");
+            var uri = new Uri(ConfigurationManager.AppSettings["tfsServer"]);
             var changesets = new TFSQueryRunner(uri).GetChangeset(null);
             foreach (var changeset in changesets)
             {
